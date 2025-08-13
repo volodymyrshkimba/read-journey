@@ -3,6 +3,7 @@ import Icon from "../Icon/Icon";
 import iphone from "../../img/iphone-mobile@1x.png";
 
 import css from "./AuthPageWrapper.module.css";
+import Input from "../Input/Input";
 
 const AuthPageWrapper = ({ children }) => {
   return (
@@ -14,7 +15,7 @@ const AuthPageWrapper = ({ children }) => {
         <h1 className={css.title}>
           Expand your mind, reading <span className={css.accent}>a book</span>
         </h1>
-        <div className={css.form}>{children}</div>
+        {children}
       </div>
       <div className={css.pictureSide}>
         <img className={css.img} src={iphone} alt="iPhone" />

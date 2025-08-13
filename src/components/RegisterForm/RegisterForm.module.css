@@ -1,0 +1,32 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.intutsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btnsWrapper {
+  margin-top: 8px;
+}
+
+.link {
+  font-size: 12px;
+  line-height: 1.17;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--light-secondary);
+  margin-left: 14px;
+  transition: color 0.3s ease;
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+  color: var(--light-primary);
+}

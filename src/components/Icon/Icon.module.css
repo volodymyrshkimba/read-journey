@@ -1,3 +1,9 @@
-.logo {
-  fill: var(--light-primary);
+.icon {
+  fill: currentColor;
+  stroke: none;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: currentColor;
 }
