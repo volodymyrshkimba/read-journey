@@ -40,3 +40,20 @@
 .login {
   padding: 12px 45px;
 }
+
+/* Tablet styles */
+
+@media screen and (min-width: 768px) {
+  .btn {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .register {
+    padding: 16px 54px;
+  }
+
+  .login {
+    padding: 16px 54px;
+  }
+}

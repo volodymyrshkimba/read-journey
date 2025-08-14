@@ -7,3 +7,35 @@
   fill: none;
   stroke: currentColor;
 }
+
+.error {
+  fill: var(--accent-tertiary);
+}
+
+.check-o {
+  fill: var(--accent-secondary);
+}
+
+/* Tablet styles */
+
+@media screen and (min-width: 768px) {
+  .error {
+    width: 20px;
+    height: 20px;
+  }
+
+  .check-o {
+    width: 20px;
+    height: 20px;
+  }
+
+  .eye {
+    width: 20px;
+    height: 20px;
+  }
+
+  .eye-off {
+    width: 20px;
+    height: 20px;
+  }
+}

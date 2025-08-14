@@ -5,11 +5,26 @@ import Icon from "../Icon/Icon";
 import css from "./Input.module.css";
 import clsx from "clsx";
 
-const Input = ({ type, label, placeholder, id, register, error }) => {
+const Input = ({
+  type,
+  label,
+  placeholder,
+  id,
+  register,
+  error,
+  isSubmitted,
+  isSubmitSuccessful,
+}) => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <label className={clsx(css.label, error && css.error)}>
+    <label
+      className={clsx(
+        css.label,
+        error && css.error,
+        isSubmitted && !isSubmitSuccessful && !error && css.correct
+      )}
+    >
       <span className={css.labelText}>{label}</span>
       <input
         className={css.input}
@@ -17,6 +32,13 @@ const Input = ({ type, label, placeholder, id, register, error }) => {
         placeholder={placeholder}
         {...register(id)}
       />
+      {(error || (isSubmitted && !error && !isSubmitSuccessful)) && (
+        <span
+          className={clsx(css.statusIcon, type === "password" && css.pwdIcon)}
+        >
+          <Icon name={error ? "error" : "check-o"} w={18} h={18} />
+        </span>
+      )}
       {error && <span className={css.errorText}>{error}</span>}
       {type === "password" && (
         <button

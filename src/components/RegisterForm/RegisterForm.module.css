@@ -30,3 +30,19 @@
 .link:active {
   color: var(--light-primary);
 }
+
+/* Tablet styles */
+
+@media screen and (min-width: 768px) {
+  .intutsWrapper {
+    gap: 14px;
+  }
+
+  .btnsWrapper {
+    margin-top: 14px;
+  }
+
+  .link {
+    margin-left: 20px;
+  }
+}

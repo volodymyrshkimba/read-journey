@@ -13,10 +13,14 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitted, isSubmitSuccessful },
   } = useForm({ resolver: yupResolver(RegisterSchema) });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
@@ -35,6 +39,8 @@ const RegisterForm = () => {
           id={"email"}
           register={register}
           error={errors.email?.message}
+          isSubmitted={isSubmitted}
+          isSubmitSuccessful={isSubmitSuccessful}
         />
         <Input
           label={"Password:"}
@@ -43,6 +49,8 @@ const RegisterForm = () => {
           id={"password"}
           register={register}
           error={errors.password?.message}
+          isSubmitted={isSubmitted}
+          isSubmitSuccessful={isSubmitSuccessful}
         />
       </div>
       <div className={css.btnsWrapper}>

@@ -13,7 +13,7 @@ const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitted, isSubmitSuccessful },
   } = useForm({ resolver: yupResolver(LoginSchema) });
 
   const onSubmit = (data) => console.log(data);
@@ -28,6 +28,8 @@ const LoginForm = () => {
           id={"email"}
           register={register}
           error={errors.email?.message}
+          isSubmitted={isSubmitted}
+          isSubmitSuccessful={isSubmitSuccessful}
         />
         <Input
           label={"Password:"}
@@ -36,6 +38,8 @@ const LoginForm = () => {
           id={"password"}
           register={register}
           error={errors.password?.message}
+          isSubmitted={isSubmitted}
+          isSubmitSuccessful={isSubmitSuccessful}
         />
       </div>
       <div className={css.btnsWrapper}>
