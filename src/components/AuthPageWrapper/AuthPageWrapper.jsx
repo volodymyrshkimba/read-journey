@@ -1,6 +1,9 @@
 import Icon from "../Icon/Icon";
 
 import iphone from "../../img/iphone-mobile@1x.png";
+import iphoneRetina from "../../img/iphone-mobile@2x.png";
+import iphoneDesctop from "../../img/iphone-desctop@1x.png";
+import iphoneDesctopRetina from "../../img/iphone-desctop@2x.png";
 
 import css from "./AuthPageWrapper.module.css";
 
@@ -18,7 +21,23 @@ const AuthPageWrapper = ({ children }) => {
         {children}
       </div>
       <div className={css.pictureSide}>
-        <img className={css.img} src={iphone} alt="iPhone" />
+        <picture>
+          <source
+            media="(min-width: 1280px)"
+            srcSet={`
+					  		 ${iphoneDesctop}    1x,
+                      ${iphoneDesctopRetina} 2x
+						 `}
+          />
+          <source
+            media="(max-width: 767px)"
+            srcSet={`
+					  		 ${iphone}    1x,
+                      ${iphoneRetina} 2x
+						 `}
+          />
+          <img className={css.img} src={iphone} alt="iPhone" />
+        </picture>
       </div>
     </div>
   );
