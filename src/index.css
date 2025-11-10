@@ -44,6 +44,8 @@
   --accent-primary: #4f92f7;
   --accent-secondary: #30b94d;
   --accent-tertiary: #e90516;
+
+  --overlay: 20, 20, 20;
 }
 
 body {
@@ -75,6 +77,7 @@ img {
 }
 
 a {
+  display: block;
   text-decoration: none;
   color: inherit;
 }
@@ -94,6 +97,7 @@ button {
   cursor: pointer;
   border: none;
   background-color: transparent;
+  letter-spacing: inherit;
 }
 
 svg {

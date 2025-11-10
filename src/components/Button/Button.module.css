@@ -41,6 +41,11 @@
   padding: 12px 45px;
 }
 
+.logOut {
+  padding: 12px 28px;
+  display: none;
+}
+
 /* Tablet styles */
 
 @media screen and (min-width: 768px) {
@@ -55,5 +60,11 @@
 
   .login {
     padding: 16px 54px;
+  }
+
+  .logOut {
+    display: block;
+    font-size: 16px;
+    line-height: 1.12;
   }
 }
