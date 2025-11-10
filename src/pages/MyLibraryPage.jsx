@@ -1,12 +1,12 @@
 import PageWrapper from "../components/PageWrappee/PageWrapper";
 
-const RecommendedPage = () => {
+const MyLibraryPage = () => {
   return (
     <PageWrapper>
       <div>sidebar</div>
-      <div>recommended</div>
+      <div>my library</div>
     </PageWrapper>
   );
 };
 
-export default RecommendedPage;
+export default MyLibraryPage;

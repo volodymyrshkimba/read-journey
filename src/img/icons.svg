@@ -78,5 +78,10 @@
   <symbol viewBox="0 0 23 16" id="burger">
     <path d="M1 8H22M1 1H22M8 15H22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
+  <symbol viewBox="0 0 28 28" id="x">
+    <path d="M21 7L7 21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M7 7L21 21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+
 </defs>
 </svg>
