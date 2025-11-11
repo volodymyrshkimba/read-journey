@@ -46,6 +46,10 @@
   display: none;
 }
 
+.toApply {
+  padding: 10px 20px;
+}
+
 @media screen and (max-width: 767px) {
   .logOutMobile {
     padding: 10px 20px;
