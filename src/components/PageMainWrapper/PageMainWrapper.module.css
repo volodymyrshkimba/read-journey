@@ -1,4 +1,5 @@
 .wrapper {
+  position: relative;
   background-color: var(--dark-secondary);
   border-radius: 30px;
   padding: 40px 20px;

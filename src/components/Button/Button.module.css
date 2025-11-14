@@ -77,4 +77,11 @@
     font-size: 16px;
     line-height: 1.12;
   }
+
+  .toApply {
+    padding: 12px 28px;
+    font-size: 16px;
+    line-height: 1.12;
+    letter-spacing: 0.02em;
+  }
 }

@@ -30,6 +30,7 @@
 }
 
 .labelText {
+  white-space: nowrap;
   color: var(--light-secondary);
   padding: 14px 0px 14px 14px;
   border-top-left-radius: 12px;
