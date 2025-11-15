@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { LoginSchema } from "../../validation/auth";
+
+import { signin } from "../../redux/auth/operations";
 
 import Input from "../Input/Input";
 import Button from "../Button/Button";
@@ -10,13 +13,19 @@ import Button from "../Button/Button";
 import css from "./LoginForm.module.css";
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitted, isSubmitSuccessful },
   } = useForm({ resolver: yupResolver(LoginSchema) });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    dispatch(signin(data));
+    reset();
+  };
 
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>

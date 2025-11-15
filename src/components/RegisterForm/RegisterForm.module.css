@@ -13,6 +13,9 @@
 
 .btnsWrapper {
   margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .link {
@@ -40,6 +43,7 @@
 
   .btnsWrapper {
     margin-top: 14px;
+    gap: 20px;
   }
 
   .link {

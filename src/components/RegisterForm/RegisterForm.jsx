@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { RegisterSchema } from "../../validation/auth";
+
+import { signup } from "../../redux/auth/operations.js";
 
 import Input from "../Input/Input";
 import Button from "../Button/Button";
@@ -10,6 +13,8 @@ import Button from "../Button/Button";
 import css from "./RegisterForm.module.css";
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -18,7 +23,7 @@ const RegisterForm = () => {
   } = useForm({ resolver: yupResolver(RegisterSchema) });
 
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(signup(data));
     reset();
   };
 
