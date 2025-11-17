@@ -1,45 +1,58 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import PageWrapper from "../../components/PageWrapper/PageWrapper";
 import DashboardWrapper from "../../components/DashboardWrapper/DashboardWrapper";
 import PageMainWrapper from "../../components/PageMainWrapper/PageMainWrapper";
 import RecommendedFilters from "../../components/RecommenededFilters/RecommendedFilters";
 import StartYourWorkout from "../../components/StartYourWorkout/StartYourWorkout";
-import Icon from "../../components/Icon/Icon";
+import PaginationArrow from "../../components/PaginationArrow/PaginationArrow";
 
 import books from "../../img/books.png";
 
+import { usePerPage } from "../../hooks/usePerPage";
+
+import { getRecommended } from "../../redux/books/operations";
+import {
+  selectRecommendedBooks,
+  selectRecommendedBooksTotalPages,
+} from "../../redux/books/selectors";
+
 import css from "./RecommendedPage.module.css";
 
-const booksData = {
-  results: [
-    {
-      _id: "654fc4d00a563c69b09895ef",
-      title: "Lovers of Justice",
-      author: "Yuri Andrukhovych",
-      imageUrl:
-        "https://res.cloudinary.com/drfvfno3o/image/upload/v1699726543/books/1.webp",
-      totalPages: 304,
-      recommend: true,
-    },
-    {
-      _id: "654fc5064f56fe7a8d0e19eb",
-      title: "It doesn't hurt",
-      author: "Kateryna Babkina",
-      imageUrl:
-        "https://res.cloudinary.com/drfvfno3o/image/upload/v1699726598/books/2.png",
-      totalPages: 72,
-      recommend: true,
-    },
-  ],
-  totalPages: 4,
-  page: 1,
-  perPage: 2,
-};
+const defaultFilters = { title: "", author: "" };
 
 const RecommendedPage = () => {
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const perPage = usePerPage();
+  const [filters, setFilters] = useState(defaultFilters);
+
+  const booksData = useSelector(selectRecommendedBooks);
+  const totalPages = useSelector(selectRecommendedBooksTotalPages);
+
+  const getFilters = (formData) => {
+    setPage(1);
+    setFilters(formData);
+  };
+
+  useEffect(() => {
+    dispatch(
+      getRecommended({
+        page,
+        perPage,
+        ...filters,
+      })
+    );
+  }, [page, perPage, filters, dispatch]);
+
   return (
     <PageWrapper>
       <DashboardWrapper>
-        <RecommendedFilters />
+        <RecommendedFilters
+          getFilters={getFilters}
+          defaultFilters={defaultFilters}
+        />
         <StartYourWorkout />
         <div className={css.booksWrapper}>
           <img src={books} alt="books" width={40} height={40} />
@@ -51,23 +64,30 @@ const RecommendedPage = () => {
       </DashboardWrapper>
       <PageMainWrapper title={"Recommended"}>
         <div className={css.arrowsWrapper}>
-          <button className={css.arrow} type="button">
-            <Icon name={"left"} w={6} h={10} stroke />
-          </button>
-          <button className={css.arrow} type="button">
-            <Icon name={"right"} w={6} h={10} stroke />
-          </button>
+          <PaginationArrow
+            direction="left"
+            page={page}
+            totalPages={totalPages}
+            setPage={setPage}
+          />
+          <PaginationArrow
+            direction="right"
+            page={page}
+            totalPages={totalPages}
+            setPage={setPage}
+          />
         </div>
         <ul className={css.booksList}>
-          {booksData.results.map((book) => (
-            <li key={book._id}>
-              <div className={css.thumb}>
-                <img src={book.imageUrl} alt={book.title} />
-              </div>
-              <h3 className={css.title}>{book.title}</h3>
-              <p className={css.author}>{book.author}</p>
-            </li>
-          ))}
+          {booksData !== null &&
+            booksData.map((book) => (
+              <li key={book._id}>
+                <div className={css.thumb}>
+                  <img src={book.imageUrl} alt={book.title} />
+                </div>
+                <h3 className={css.title}>{book.title}</h3>
+                <p className={css.author}>{book.author}</p>
+              </li>
+            ))}
         </ul>
       </PageMainWrapper>
     </PageWrapper>

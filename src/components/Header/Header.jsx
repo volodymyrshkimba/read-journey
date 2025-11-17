@@ -1,17 +1,25 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
+import NavigationLink from "../NavigationLink/NavigationLink";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import Button from "../Button/Button";
 import Icon from "../Icon/Icon";
 
+import { signout } from "../../redux/auth/operations.js";
+
 import css from "./Header.module.css";
-import NavigationLink from "../NavigationLink/NavigationLink";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
 
   const closeMenu = () => {
     setIsOpen(false);
+  };
+
+  const singOut = () => {
+    dispatch(signout());
   };
 
   return (
@@ -39,11 +47,16 @@ const Header = () => {
         >
           <Icon name={"burger"} w={21} h={14} stroke />
         </button>
-        <Button type="button" variant="transparent" size="logOut">
+        <Button
+          type="button"
+          variant="transparent"
+          size="logOut"
+          onClick={singOut}
+        >
           Log out
         </Button>
       </div>
-      {isOpen && <MobileMenu closeMenu={closeMenu} />}
+      {isOpen && <MobileMenu closeMenu={closeMenu} singOut={singOut} />}
     </header>
   );
 };

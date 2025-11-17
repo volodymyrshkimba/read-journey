@@ -1,0 +1,3 @@
+export const selectRecommendedBooks = (state) => state.books.recommended.books;
+export const selectRecommendedBooksTotalPages = (state) =>
+  state.books.recommended.totalPages;

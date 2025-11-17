@@ -9,7 +9,9 @@ const RestrictedRoute = ({
 }) => {
   const isLoggedIn = useSelector(selectIsSignedIn);
 
-  return isLoggedIn ? <Navigate to={restrictedTo} /> : Component;
+  const lastRoute = localStorage.getItem("lastRoute") || restrictedTo;
+
+  return isLoggedIn ? <Navigate to={lastRoute} /> : Component;
 };
 
 export default RestrictedRoute;

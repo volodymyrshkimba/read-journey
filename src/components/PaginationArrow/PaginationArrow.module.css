@@ -1,0 +1,16 @@
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  border: 1px solid rgba(var(--light-primary-rgb), 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+}

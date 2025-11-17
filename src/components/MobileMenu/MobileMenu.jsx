@@ -4,7 +4,7 @@ import Icon from "../Icon/Icon";
 
 import css from "./MobileMenu.module.css";
 
-const MobileMenu = ({ closeMenu }) => {
+const MobileMenu = ({ closeMenu, singOut }) => {
   return (
     <div className={css.mobileMenu}>
       <div className={css.menu}>
@@ -25,7 +25,12 @@ const MobileMenu = ({ closeMenu }) => {
             <NavigationLink to={"/library"} name={"My library"} />
           </li>
         </ul>
-        <Button type="button" variant="transparent" size="logOutMobile">
+        <Button
+          type="button"
+          variant="transparent"
+          size="logOutMobile"
+          onClick={singOut}
+        >
           Log out
         </Button>
       </div>

@@ -41,6 +41,15 @@ export const signin = createAsyncThunk(
   }
 );
 
+export const signout = createAsyncThunk("auth/signout", async (_, thunkAPI) => {
+  try {
+    await axios.post("/users/signout");
+    clearAuthHeader();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 export const current = createAsyncThunk("auth/current", async (_, thunkAPI) => {
   const state = thunkAPI.getState();
   if (state.auth.token === null) {

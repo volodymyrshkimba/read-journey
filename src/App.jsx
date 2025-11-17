@@ -10,9 +10,13 @@ import RecommendedPage from "./pages/RecommendedPage/RecommendedPage.jsx";
 import MyLibraryPage from "./pages/MyLibraryPage.jsx";
 
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute.jsx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+
+import { useSaveLastRoute } from "./hooks/useSaveLastRoute.jsx";
 
 function App() {
   const dispatch = useDispatch();
+  useSaveLastRoute();
 
   useEffect(() => {
     dispatch(current());
@@ -20,8 +24,18 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/recommended" element={<RecommendedPage />} />
-      <Route path="/library" element={<MyLibraryPage />} />
+      <Route
+        path="/recommended"
+        element={
+          <PrivateRoute restrictedTo="/login" component={<RecommendedPage />} />
+        }
+      />
+      <Route
+        path="/library"
+        element={
+          <PrivateRoute restrictedTo="/login" component={<MyLibraryPage />} />
+        }
+      />
       <Route
         path="/register"
         element={

@@ -3,10 +3,14 @@ import sprite from "../../img/icons.svg";
 
 import css from "./Icon.module.css";
 
-const Icon = ({ name, stroke, w, h }) => {
+const Icon = ({ name, stroke, w, h, disabled }) => {
   return (
     <svg
-      className={clsx(stroke ? css.iconStroke : css.icon, css[name] || "")}
+      className={clsx(
+        stroke ? css.iconStroke : css.icon,
+        css[name] || "",
+        disabled && css.disabled
+      )}
       width={w}
       height={h}
     >
