@@ -1,0 +1,57 @@
+.wrapper {
+  position: relative;
+  background-color: var(--dark-tertiary);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.list {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 17px;
+}
+
+.link {
+  max-width: 50px;
+  font-size: 12px;
+  line-height: 1.17;
+  text-decoration: underline;
+  color: var(--light-secondary);
+}
+
+.linkArrow {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 26px 40px 27px 20px;
+  }
+
+  .list {
+    margin-bottom: 20px;
+  }
+
+  .link {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .linkArrow {
+    bottom: 27px;
+  }
+}

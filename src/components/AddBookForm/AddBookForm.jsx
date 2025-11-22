@@ -3,22 +3,24 @@ import { useForm } from "react-hook-form";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
-import css from "./RecommendedFilters.module.css";
+import css from "./AddBookForm.module.css";
 
-const RecommendedFilters = ({ getFilters, defaultFilters }) => {
+const AddBookForm = ({ getFilters, defaultFilters }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (formData) => {
-    getFilters(formData);
+    console.log(formData);
+
+    // getFilters(formData);
   };
 
   return (
     <form
       className={css.form}
       onSubmit={handleSubmit(onSubmit)}
-      defaultValue={defaultFilters}
+      // defaultValue={defaultFilters}
     >
-      <p className={css.formTitle}>Filters:</p>
+      <p className={css.formTitle}>Create your library:</p>
       <div className={css.inputsWrapper}>
         <Input
           label={"Book title:"}
@@ -34,12 +36,19 @@ const RecommendedFilters = ({ getFilters, defaultFilters }) => {
           id={"author"}
           register={register}
         />
+        <Input
+          label={"Number of pages:"}
+          placeholder={"0"}
+          type={"number"}
+          id={"totalPages"}
+          register={register}
+        />
       </div>
-      <Button type="submit" size={"toApply"} variant={"transparent"}>
-        To apply
+      <Button type="submit" size={"addBook"} variant={"transparent"}>
+        Add book
       </Button>
     </form>
   );
 };
 
-export default RecommendedFilters;
+export default AddBookForm;

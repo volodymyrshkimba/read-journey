@@ -15,3 +15,14 @@ export const getRecommended = createAsyncThunk(
     }
   }
 );
+
+export const addRecommendedBookToLibrary = createAsyncThunk(
+  "books/addRecommendedBookToLibrary",
+  async (_id, thunkAPI) => {
+    try {
+      await axios.post(`/books/add/${_id}`);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

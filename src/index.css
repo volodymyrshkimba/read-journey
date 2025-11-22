@@ -46,6 +46,7 @@
   --accent-tertiary: #e90516;
 
   --overlay: 20, 20, 20;
+  --modalBorder: 104, 104, 104;
 }
 
 body {

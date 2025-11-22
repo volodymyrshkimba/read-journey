@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getRecommended } from "./operations";
+import { addRecommendedBookToLibrary, getRecommended } from "./operations";
 
-const authSlice = createSlice({
+const booksSlice = createSlice({
   name: "books",
   initialState: {
     recommended: {
@@ -23,8 +23,17 @@ const authSlice = createSlice({
       })
       .addCase(getRecommended.rejected, (state) => {
         state.isLoading = false;
+      })
+      .addCase(addRecommendedBookToLibrary.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addRecommendedBookToLibrary.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(addRecommendedBookToLibrary.rejected, (state) => {
+        state.isLoading = false;
       });
   },
 });
 
-export default authSlice.reducer;
+export default booksSlice.reducer;

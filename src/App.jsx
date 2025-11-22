@@ -11,6 +11,7 @@ import MyLibraryPage from "./pages/MyLibraryPage.jsx";
 
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+import Modal from "./components/Modal/Modal.jsx";
 
 import { useSaveLastRoute } from "./hooks/useSaveLastRoute.jsx";
 
@@ -23,38 +24,44 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route
-        path="/recommended"
-        element={
-          <PrivateRoute restrictedTo="/login" component={<RecommendedPage />} />
-        }
-      />
-      <Route
-        path="/library"
-        element={
-          <PrivateRoute restrictedTo="/login" component={<MyLibraryPage />} />
-        }
-      />
-      <Route
-        path="/register"
-        element={
-          <RestrictedRoute
-            restrictedTo="/recommended"
-            component={<RegisterPage />}
-          />
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          <RestrictedRoute
-            restrictedTo="/recommended"
-            component={<LoginPage />}
-          />
-        }
-      />
-    </Routes>
+    <>
+      <Routes>
+        <Route
+          path="/recommended"
+          element={
+            <PrivateRoute
+              restrictedTo="/login"
+              component={<RecommendedPage />}
+            />
+          }
+        />
+        <Route
+          path="/library"
+          element={
+            <PrivateRoute restrictedTo="/login" component={<MyLibraryPage />} />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              restrictedTo="/recommended"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute
+              restrictedTo="/recommended"
+              component={<LoginPage />}
+            />
+          }
+        />
+      </Routes>
+      <Modal />
+    </>
   );
 }
 

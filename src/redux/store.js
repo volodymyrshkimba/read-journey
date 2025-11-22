@@ -13,6 +13,7 @@ import {
 
 import booksReducer from "./books/slice";
 import authReducer from "./auth/slice";
+import modalReducer from "./modal/slice";
 
 const persistAuthConfig = {
   key: "token",
@@ -27,6 +28,7 @@ const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     books: booksReducer,
+    modal: modalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

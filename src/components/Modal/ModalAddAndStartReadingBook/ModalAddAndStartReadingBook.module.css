@@ -1,0 +1,53 @@
+.content {
+  text-align: center;
+}
+
+.thumb {
+  display: inline-block;
+  max-width: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 18px;
+  line-height: 1;
+  margin-bottom: 2px;
+  max-width: 194px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.author {
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--light-secondary);
+  margin-bottom: 4px;
+}
+
+.totalPages {
+  font-size: 10px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .thumb {
+    max-width: 153px;
+  }
+
+  .title {
+    font-size: 20px;
+    max-width: 317px;
+  }
+
+  .author {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .totalPages {
+    margin-bottom: 32px;
+  }
+}

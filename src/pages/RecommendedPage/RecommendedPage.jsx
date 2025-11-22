@@ -12,6 +12,7 @@ import books from "../../img/books.png";
 
 import { usePerPage } from "../../hooks/usePerPage";
 
+import { openModal } from "../../redux/modal/slice";
 import { getRecommended } from "../../redux/books/operations";
 import {
   selectRecommendedBooks,
@@ -80,9 +81,24 @@ const RecommendedPage = () => {
         <ul className={css.booksList}>
           {booksData !== null &&
             booksData.map((book) => (
-              <li key={book._id}>
+              <li
+                className={css.listItem}
+                key={book._id}
+                onClick={() =>
+                  dispatch(
+                    openModal({
+                      type: "addRecommendedBook",
+                      props: { ...book },
+                    })
+                  )
+                }
+              >
                 <div className={css.thumb}>
-                  <img src={book.imageUrl} alt={book.title} />
+                  <img
+                    className={css.image}
+                    src={book.imageUrl}
+                    alt={book.title}
+                  />
                 </div>
                 <h3 className={css.title}>{book.title}</h3>
                 <p className={css.author}>{book.author}</p>
