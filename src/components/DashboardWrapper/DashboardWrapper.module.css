@@ -25,4 +25,8 @@
     flex-direction: column;
     gap: 20px;
   }
+
+  .wrapper.mylibrary {
+    gap: 70px;
+  }
 }

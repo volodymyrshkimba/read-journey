@@ -5,6 +5,7 @@ import { closeModal } from "../../redux/modal/slice";
 import { selectModalData } from "../../redux/modal/selectors";
 
 import ModalAddAndStartReadingBook from "./ModalAddAndStartReadingBook/ModalAddAndStartReadingBook";
+import ModalAddedAndReadedBook from "./ModalAddedAndReadedBook/ModalAddedAndReadedBook";
 
 import Icon from "../Icon/Icon";
 
@@ -23,6 +24,9 @@ const Modal = () => {
         onClose={() => dispatch(closeModal())}
       />
     ),
+    bookAdded: (
+      <ModalAddedAndReadedBook onClose={() => dispatch(closeModal())} />
+    ),
   };
 
   return (
@@ -33,7 +37,7 @@ const Modal = () => {
       >
         <button
           type="button"
-          className={css.closeBtn}
+          className={clsx(css.closeBtn, css[modalType])}
           onClick={() => dispatch(closeModal())}
         >
           <Icon name={"x"} w={22} h={22} stroke />

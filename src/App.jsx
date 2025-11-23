@@ -7,7 +7,7 @@ import { current } from "./redux/auth/operations.js";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage";
 import RecommendedPage from "./pages/RecommendedPage/RecommendedPage.jsx";
-import MyLibraryPage from "./pages/MyLibraryPage.jsx";
+import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage.jsx";
 
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";

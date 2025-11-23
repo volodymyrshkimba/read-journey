@@ -47,6 +47,10 @@
 
   --overlay: 20, 20, 20;
   --modalBorder: 104, 104, 104;
+
+  --select-border: #3e3e3e;
+
+  --trash: 232, 80, 80;
 }
 
 body {

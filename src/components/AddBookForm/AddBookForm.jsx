@@ -1,25 +1,36 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
+import { addBook } from "../../redux/books/operations";
+import { openModal } from "../../redux/modal/slice";
+
 import css from "./AddBookForm.module.css";
 
-const AddBookForm = ({ getFilters, defaultFilters }) => {
-  const { register, handleSubmit } = useForm();
+const defaultFilters = { title: "", author: "", totalPages: "" };
+
+const AddBookForm = () => {
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm({
+    defaultValues: defaultFilters,
+  });
 
   const onSubmit = (formData) => {
-    console.log(formData);
-
-    // getFilters(formData);
+    dispatch(addBook(formData))
+      .unwrap()
+      .then(() => {
+        dispatch(
+          openModal({
+            type: "bookAdded",
+          })
+        );
+      });
   };
 
   return (
-    <form
-      className={css.form}
-      onSubmit={handleSubmit(onSubmit)}
-      // defaultValue={defaultFilters}
-    >
+    <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <p className={css.formTitle}>Create your library:</p>
       <div className={css.inputsWrapper}>
         <Input

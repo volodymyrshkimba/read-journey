@@ -1,0 +1,70 @@
+.wrapper {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+  padding: 12px 14px;
+  border: 1px solid var(--select-border);
+  border-radius: 12px;
+}
+
+.currStatus {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.optionsList {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  border-radius: 12px;
+  padding-top: 10.5px;
+  padding-bottom: 10.5px;
+  background-color: var(--dark-tertiary);
+}
+
+.option {
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--light-secondary);
+  padding-top: 3.5px;
+  padding-bottom: 3.5px;
+  padding-left: 14px;
+}
+
+.option.active {
+  color: var(--light-primary);
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    right: 40px;
+  }
+
+  .select {
+    width: 153px;
+    padding: 14px;
+  }
+
+  .currStatus {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .optionsList {
+    top: calc(100% + 8px);
+  }
+
+  .option {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}

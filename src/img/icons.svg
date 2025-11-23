@@ -88,5 +88,14 @@
   <symbol viewBox="0 0 7 12" id="right">
     <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
+  <symbol viewBox="0 0 10 6" id="down">
+    <path d="M0.75 0.75L4.75 4.75L8.75 0.75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+  <symbol viewBox="0 0 14 14" id="trash">
+    <path d="M1.75 3.5H2.91667H12.25" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M11.0837 3.50008V11.6668C11.0837 11.9762 10.9607 12.2729 10.742 12.4917C10.5232 12.7105 10.2264 12.8334 9.91699 12.8334H4.08366C3.77424 12.8334 3.47749 12.7105 3.2587 12.4917C3.03991 12.2729 2.91699 11.9762 2.91699 11.6668V3.50008M4.66699 3.50008V2.33342C4.66699 2.024 4.78991 1.72725 5.0087 1.50846C5.22749 1.28966 5.52424 1.16675 5.83366 1.16675H8.16699C8.47641 1.16675 8.77316 1.28966 8.99195 1.50846C9.21074 1.72725 9.33366 2.024 9.33366 2.33342V3.50008" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M5.83301 6.41675V9.91675" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M8.16699 6.41675V9.91675" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
 </defs>
 </svg>

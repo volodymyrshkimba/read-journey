@@ -6,18 +6,15 @@ import Button from "../Button/Button";
 import css from "./RecommendedFilters.module.css";
 
 const RecommendedFilters = ({ getFilters, defaultFilters }) => {
-  const { register, handleSubmit } = useForm();
-
+  const { register, handleSubmit } = useForm({
+    defaultValues: defaultFilters,
+  });
   const onSubmit = (formData) => {
     getFilters(formData);
   };
 
   return (
-    <form
-      className={css.form}
-      onSubmit={handleSubmit(onSubmit)}
-      defaultValue={defaultFilters}
-    >
+    <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <p className={css.formTitle}>Filters:</p>
       <div className={css.inputsWrapper}>
         <Input

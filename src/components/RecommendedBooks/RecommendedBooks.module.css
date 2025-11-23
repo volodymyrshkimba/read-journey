@@ -14,8 +14,45 @@
 
 .list {
   display: flex;
+  justify-content: space-between;
   gap: 20px;
   margin-bottom: 17px;
+}
+
+.listItem {
+  max-width: 71px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb {
+  height: 107px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.bookTitle {
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--light-tertiary);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.author {
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--light-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .link {
@@ -30,6 +67,13 @@
   position: absolute;
   right: 20px;
   bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .linkArrow svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media screen and (min-width: 768px) {
