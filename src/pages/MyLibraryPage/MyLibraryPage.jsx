@@ -11,6 +11,7 @@ import Icon from "../../components/Icon/Icon";
 
 import booksImg from "../../img/books.png";
 
+import { openModal } from "../../redux/modal/slice";
 import { deleteBook, getOwnBooks } from "../../redux/books/operations";
 import { selectOwnBooks } from "../../redux/books/selectors";
 
@@ -28,7 +29,7 @@ const MyLibraryPage = () => {
 
   return (
     <PageWrapper>
-      <DashboardWrapper mylibrary>
+      <DashboardWrapper page="mylibrary">
         <AddBookForm />
         <RecommendedBooks />
       </DashboardWrapper>
@@ -39,7 +40,17 @@ const MyLibraryPage = () => {
             {booksData.map((book) => {
               return (
                 <li key={book._id} className={css.listItem}>
-                  <div className={css.thumb}>
+                  <div
+                    className={css.thumb}
+                    onClick={() =>
+                      dispatch(
+                        openModal({
+                          type: "startReadingBook",
+                          props: { ...book },
+                        })
+                      )
+                    }
+                  >
                     <img
                       className={css.image}
                       src={

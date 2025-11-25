@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage";
 import RecommendedPage from "./pages/RecommendedPage/RecommendedPage.jsx";
 import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage.jsx";
+import ReadingPage from "./pages/ReadingPage.jsx";
 
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
@@ -39,6 +40,12 @@ function App() {
           path="/library"
           element={
             <PrivateRoute restrictedTo="/login" component={<MyLibraryPage />} />
+          }
+        />
+        <Route
+          path="/reading/:id"
+          element={
+            <PrivateRoute restrictedTo="/login" component={<ReadingPage />} />
           }
         />
         <Route

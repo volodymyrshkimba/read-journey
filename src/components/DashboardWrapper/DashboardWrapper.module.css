@@ -7,6 +7,10 @@
   padding: 20px;
 }
 
+.wrapper.readingPage {
+  gap: 40px;
+}
+
 .wrapper:first-child {
   background-color: red;
 }

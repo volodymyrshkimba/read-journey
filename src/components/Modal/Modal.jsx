@@ -24,6 +24,13 @@ const Modal = () => {
         onClose={() => dispatch(closeModal())}
       />
     ),
+    startReadingBook: (
+      <ModalAddAndStartReadingBook
+        {...modalProps}
+        onClose={() => dispatch(closeModal())}
+        isStartReadingBook={modalType === "startReadingBook"}
+      />
+    ),
     bookAdded: (
       <ModalAddedAndReadedBook onClose={() => dispatch(closeModal())} />
     ),

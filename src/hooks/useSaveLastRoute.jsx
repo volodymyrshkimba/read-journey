@@ -7,7 +7,8 @@ export const useSaveLastRoute = () => {
   useEffect(() => {
     if (
       location.pathname === "/recommended" ||
-      location.pathname === "/library"
+      location.pathname === "/library" ||
+      location.pathname.split("/")[1] === "reading"
     ) {
       localStorage.setItem("lastRoute", location.pathname);
     }
