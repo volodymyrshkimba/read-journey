@@ -5,3 +5,8 @@ export const selectBookInfo = (state) => {
   }
   return state.reading.currentBook;
 };
+
+export const selectActiveStatus = (state) =>
+  state.reading.currentBook?.progress.some(
+    (book) => book.status === "active"
+  ) || false;

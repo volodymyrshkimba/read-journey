@@ -15,6 +15,10 @@
     padding: 40px;
   }
 
+  .wrapper.readingPage {
+    padding: 40px 40px 25px 40px;
+  }
+
   .title {
     font-size: 28px;
     line-height: 1.14;
@@ -25,5 +29,9 @@
 @media screen and (min-width: 1280px) {
   .wrapper {
     padding: 40px 40px 28px 40px;
+  }
+
+  .wrapper.readingPage {
+    padding: 40px 40px 53px 40px;
   }
 }
