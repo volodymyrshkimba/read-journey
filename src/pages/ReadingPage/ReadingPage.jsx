@@ -8,11 +8,13 @@ import DashboardWrapper from "../../components/DashboardWrapper/DashboardWrapper
 import PageMainWrapper from "../../components/PageMainWrapper/PageMainWrapper";
 import StartStopReadingFrom from "../../components/StartStopReadingFrom/StartStopReadingFrom";
 import ReadingProgress from "../../components/ReadingProgress/ReadingProgress";
+import DiaryAndStatistics from "../../components/DiaryAndStatistics/DiaryAndStatistics";
 
 import { getBookInfo } from "../../redux/reading/operations";
 import {
   selectActiveStatus,
   selectBookInfo,
+  selectHasProgress,
 } from "../../redux/reading/selectors";
 
 import css from "./ReadingPage.module.css";
@@ -25,6 +27,8 @@ const ReadingPage = () => {
 
   const isActive = useSelector(selectActiveStatus);
 
+  const hasProgress = useSelector(selectHasProgress);
+
   useEffect(() => {
     dispatch(getBookInfo(id));
   }, [dispatch, id]);
@@ -33,7 +37,7 @@ const ReadingPage = () => {
     <PageWrapper>
       <DashboardWrapper page="readingPage">
         <StartStopReadingFrom bookId={id} />
-        <ReadingProgress />
+        {hasProgress ? <DiaryAndStatistics /> : <ReadingProgress />}
       </DashboardWrapper>
       <PageMainWrapper page="readingPage" title={"My reading"}>
         <div className={css.wrapper}>

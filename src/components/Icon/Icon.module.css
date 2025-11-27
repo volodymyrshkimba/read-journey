@@ -28,6 +28,22 @@
   stroke: rgb(var(--trash));
 }
 
+.hourglass {
+  stroke: var(--light-secondary);
+}
+
+.hourglass.active {
+  stroke: currentColor;
+}
+
+.pie-chart {
+  stroke: var(--light-secondary);
+}
+
+.pie-chart.active {
+  stroke: currentColor;
+}
+
 /* Tablet styles */
 
 @media screen and (min-width: 768px) {

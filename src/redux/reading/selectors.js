@@ -10,3 +10,5 @@ export const selectActiveStatus = (state) =>
   state.reading.currentBook?.progress.some(
     (book) => book.status === "active"
   ) || false;
+
+export const selectHasProgress = (state) => state.reading.currentBook?.progress;
