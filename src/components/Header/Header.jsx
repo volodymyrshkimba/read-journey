@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import NavigationLink from "../NavigationLink/NavigationLink";
 import MobileMenu from "../MobileMenu/MobileMenu";
@@ -7,12 +7,15 @@ import Button from "../Button/Button";
 import Icon from "../Icon/Icon";
 
 import { signout } from "../../redux/auth/operations.js";
+import { selectUserNameAndFirstLetter } from "../../redux/auth/selectors.js";
 
 import css from "./Header.module.css";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+
+  const userInfo = useSelector(selectUserNameAndFirstLetter);
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -37,8 +40,8 @@ const Header = () => {
         </li>
       </ul>
       <div className={css.userWrapper}>
-        <span className={css.avatar}>I</span>
-        <span className={css.fullName}>Ilona Ratushniak</span>
+        <span className={css.avatar}>{userInfo.letter}</span>
+        <span className={css.fullName}>{userInfo.name}</span>
         <button
           className={css.burger}
           onClick={() => {

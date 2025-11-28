@@ -16,6 +16,10 @@
   gap: 8px;
 }
 
+.tabBtn {
+  display: block;
+}
+
 .infoWrapper {
   border-radius: 12px;
   background-color: var(--dark-tertiary);
@@ -42,4 +46,92 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 1.11;
+}
+
+.percentageWrapper {
+  display: flex;
+  gap: 15px;
+}
+
+.marker {
+  border-radius: 4px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--accent-secondary);
+}
+
+.percentage {
+  font-size: 14px;
+  line-height: 1.29;
+  margin-bottom: 4px;
+}
+
+.pagesReaded {
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--light-secondary);
+}
+
+.diaryWrapper {
+  padding: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .contentWrapper {
+    width: 321px;
+  }
+
+  .titleBtnsWrapper {
+    padding-right: 15px;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .statisticWrapper {
+    padding: 28px;
+    gap: 16px;
+  }
+
+  .fullPercentage {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .percentage {
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .pagesReaded {
+    font-size: 12px;
+    line-height: 1.17;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .contentWrapper {
+    width: 313px;
+  }
+
+  .titleBtnsWrapper {
+    padding-right: 0px;
+    margin-bottom: 20px;
+  }
+
+  .desctopText {
+    font-size: 14px;
+    line-height: 1.29;
+    color: var(--light-secondary);
+    max-width: 293px;
+    margin-bottom: 20px;
+  }
+
+  .statisticWrapper {
+    padding: 20px;
+    gap: 10px;
+  }
 }

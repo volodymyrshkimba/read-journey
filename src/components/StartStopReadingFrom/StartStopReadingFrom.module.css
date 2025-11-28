@@ -23,3 +23,9 @@
     font-size: 14px;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .form {
+    flex-grow: 0;
+  }
+}

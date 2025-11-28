@@ -72,4 +72,14 @@
     width: 7px;
     height: 12px;
   }
+
+  .hourglass {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pie-chart {
+    width: 20px;
+    height: 20px;
+  }
 }
