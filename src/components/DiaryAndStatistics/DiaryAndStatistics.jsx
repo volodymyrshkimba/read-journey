@@ -12,6 +12,7 @@ import {
 import { usePerPage } from "../../hooks/usePerPage";
 
 import css from "./DiaryAndStatistics.module.css";
+import RisingSpeedGraph from "../RisingSpeedGraph/RisingSpeedGraph";
 
 const tabs = [
   {
@@ -30,8 +31,8 @@ const DiaryAndStatistics = () => {
   const [currTab, setCurrTab] = useState(tabs[0]);
   const viewportSize = usePerPage();
 
+  const isPhone = viewportSize === 2;
   const isTablet = viewportSize === 8;
-
   const isDesktop = viewportSize === 10;
 
   const { pagesRead, percentage } = useSelector(selectPercentageAndPagesRead);
@@ -39,7 +40,59 @@ const DiaryAndStatistics = () => {
   const diaryData = useSelector(selectDiary);
 
   const tabContent = {
-    diary: <div className={css.diaryWrapper}>Diary</div>,
+    diary: (
+      <div className={css.diaryWrapper}>
+        <ul className={css.diaryList}>
+          {Object.keys(diaryData).map((date, i) => (
+            <li className={css.diaryItem} key={i}>
+              <div className={css.datePages}>
+                <div className={css.squareDate}>
+                  <div className={css.square}>
+                    <span className={css.squareInner}></span>
+                  </div>
+                  <p className={css.date}>{date}</p>
+                </div>
+                <p className={css.pages}>{diaryData[date].pages} pages</p>
+              </div>
+              <ul>
+                {diaryData[date].result.map((item) => (
+                  <li className={css.percentPerHour} key={item.id}>
+                    <div>
+                      <p className={css.percent}>{item.percentage}%</p>
+                      <p className={css.minutes}>{item.minutes} minutes</p>
+                    </div>
+                    <div className={css.lineBtn}>
+                      <div>
+                        <div className={css.line}>
+                          <RisingSpeedGraph
+                            speed={item.perHour}
+                            width={isPhone ? 43 : 59}
+                            height={isPhone ? 17 : 25}
+                            isPhone={isPhone}
+                          />
+                        </div>
+                        <p className={css.perHour}>
+                          {item.perHour} pages per hour
+                        </p>
+                      </div>
+                      <button className={css.trashBtn} type="button">
+                        <Icon
+                          name="trash"
+                          stroke
+                          w={14}
+                          h={14}
+                          component={"diary"}
+                        />
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ),
     statistics: (
       <div className={css.statisticWrapper}>
         <div className={css.circleWrapper}>

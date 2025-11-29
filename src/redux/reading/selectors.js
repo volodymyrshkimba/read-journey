@@ -51,7 +51,7 @@ export const selectDiary = createSelector(
       (a, b) => new Date(b.finishReading) - new Date(a.finishReading)
     );
 
-    const data = sortedToLastDate.map((item) => {
+    const mapedData = sortedToLastDate.map((item) => {
       const startReadingDate = new Date(item.startReading);
       const finishReadingDate = new Date(item.finishReading);
 
@@ -65,17 +65,27 @@ export const selectDiary = createSelector(
       const finishYear = finishReadingDate.getFullYear();
 
       const date = `${finishDay}.${finishMonth}.${finishYear}`;
-
       const pages = item.finishPage - item.startPage + 1;
-
       const percentage = ((pages / totalPages) * 100).toFixed(1);
-
       const minutes = finishMinutes - startMinutes;
-
       const perHour = item.speed;
 
-      return { date, pages, percentage, minutes, perHour };
+      return { id: item._id, date, pages, percentage, minutes, perHour };
     });
+
+    const data = mapedData.reduce((acc, item) => {
+      if (!acc[item.date]) {
+        acc[item.date] = {
+          result: [],
+          pages: 0,
+        };
+      }
+
+      acc[item.date].result.push(item);
+      acc[item.date].pages += item.pages;
+
+      return acc;
+    }, {});
 
     return data;
   }

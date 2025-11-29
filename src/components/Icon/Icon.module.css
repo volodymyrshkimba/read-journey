@@ -28,6 +28,10 @@
   stroke: rgb(var(--trash));
 }
 
+.trash.diary {
+  stroke: var(--light-secondary);
+}
+
 .hourglass {
   stroke: var(--light-secondary);
 }
