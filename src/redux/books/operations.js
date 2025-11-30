@@ -20,7 +20,9 @@ export const addRecommendedBookToLibrary = createAsyncThunk(
   "books/addRecommendedBookToLibrary",
   async (_id, thunkAPI) => {
     try {
-      await axios.post(`/books/add/${_id}`);
+      const { data } = await axios.post(`/books/add/${_id}`);
+
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

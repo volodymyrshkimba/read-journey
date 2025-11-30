@@ -7,6 +7,7 @@ import PageMainWrapper from "../../components/PageMainWrapper/PageMainWrapper";
 import RecommendedFilters from "../../components/RecommenededFilters/RecommendedFilters";
 import StartYourWorkout from "../../components/StartYourWorkout/StartYourWorkout";
 import PaginationArrow from "../../components/PaginationArrow/PaginationArrow";
+import Loader from "../../components/Loader/Loader";
 
 import books from "../../img/books.png";
 
@@ -16,6 +17,7 @@ import { openModal } from "../../redux/modal/slice";
 import { getOwnBooks, getRecommended } from "../../redux/books/operations";
 import {
   selectRecommendedBooksTotalPages,
+  selectRecommendedIsLoading,
   selectRecommendedWithStatus,
 } from "../../redux/books/selectors";
 
@@ -29,6 +31,7 @@ const RecommendedPage = () => {
   const perPage = usePerPage();
   const [filters, setFilters] = useState(defaultFilters);
 
+  const isLoading = useSelector(selectRecommendedIsLoading);
   const booksData = useSelector(selectRecommendedWithStatus);
   const totalPages = useSelector(selectRecommendedBooksTotalPages);
 
@@ -79,33 +82,37 @@ const RecommendedPage = () => {
             setPage={setPage}
           />
         </div>
-        <ul className={css.booksList}>
-          {booksData !== null &&
-            booksData.map((book) => (
-              <li
-                className={css.listItem}
-                key={book._id}
-                onClick={() =>
-                  dispatch(
-                    openModal({
-                      type: "addRecommendedBook",
-                      props: { ...book },
-                    })
-                  )
-                }
-              >
-                <div className={css.thumb}>
-                  <img
-                    className={css.image}
-                    src={book.imageUrl}
-                    alt={book.title}
-                  />
-                </div>
-                <h3 className={css.title}>{book.title}</h3>
-                <p className={css.author}>{book.author}</p>
-              </li>
-            ))}
-        </ul>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ul className={css.booksList}>
+            {booksData !== null &&
+              booksData.map((book) => (
+                <li
+                  className={css.listItem}
+                  key={book._id}
+                  onClick={() =>
+                    dispatch(
+                      openModal({
+                        type: "addRecommendedBook",
+                        props: { ...book },
+                      })
+                    )
+                  }
+                >
+                  <div className={css.thumb}>
+                    <img
+                      className={css.image}
+                      src={book.imageUrl}
+                      alt={book.title}
+                    />
+                  </div>
+                  <h3 className={css.title}>{book.title}</h3>
+                  <p className={css.author}>{book.author}</p>
+                </li>
+              ))}
+          </ul>
+        )}
       </PageMainWrapper>
     </PageWrapper>
   );

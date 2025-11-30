@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { current } from "./redux/auth/operations.js";
 
@@ -13,6 +13,9 @@ import ReadingPage from "./pages/ReadingPage/ReadingPage.jsx";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 import Modal from "./components/Modal/Modal.jsx";
+import Loader from "./components/Loader/Loader.jsx";
+
+import { selectAuthIsLoading } from "./redux/auth/selectors.js";
 
 import { useSaveLastRoute } from "./hooks/useSaveLastRoute.jsx";
 
@@ -20,54 +23,69 @@ function App() {
   const dispatch = useDispatch();
   useSaveLastRoute();
 
+  const isLoading = useSelector(selectAuthIsLoading);
+
   useEffect(() => {
     dispatch(current());
   }, [dispatch]);
 
   return (
     <>
-      <Routes>
-        <Route
-          path="/recommended"
-          element={
-            <PrivateRoute
-              restrictedTo="/login"
-              component={<RecommendedPage />}
+      {isLoading ? (
+        <Loader fixed />
+      ) : (
+        <>
+          <Routes>
+            <Route path="/" element={<Navigate to="/recommended" />} />
+            <Route
+              path="/recommended"
+              element={
+                <PrivateRoute
+                  restrictedTo="/login"
+                  component={<RecommendedPage />}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/library"
-          element={
-            <PrivateRoute restrictedTo="/login" component={<MyLibraryPage />} />
-          }
-        />
-        <Route
-          path="/reading/:id"
-          element={
-            <PrivateRoute restrictedTo="/login" component={<ReadingPage />} />
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              restrictedTo="/recommended"
-              component={<RegisterPage />}
+            <Route
+              path="/library"
+              element={
+                <PrivateRoute
+                  restrictedTo="/login"
+                  component={<MyLibraryPage />}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute
-              restrictedTo="/recommended"
-              component={<LoginPage />}
+            <Route
+              path="/reading/:id"
+              element={
+                <PrivateRoute
+                  restrictedTo="/login"
+                  component={<ReadingPage />}
+                />
+              }
             />
-          }
-        />
-      </Routes>
-      <Modal />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  restrictedTo="/recommended"
+                  component={<RegisterPage />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  restrictedTo="/recommended"
+                  component={<LoginPage />}
+                />
+              }
+            />
+          </Routes>
+          <Modal />
+        </>
+      )}
     </>
   );
 }

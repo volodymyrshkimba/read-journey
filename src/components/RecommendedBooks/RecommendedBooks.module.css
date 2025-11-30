@@ -76,6 +76,12 @@
   }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .wrapper {
+    max-height: 272px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .wrapper {
     padding: 26px 40px 27px 20px;

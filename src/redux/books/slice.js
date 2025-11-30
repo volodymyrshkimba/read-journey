@@ -37,8 +37,18 @@ const booksSlice = createSlice({
       .addCase(addRecommendedBookToLibrary.pending, (state) => {
         state.recommended.isLoading = true;
       })
-      .addCase(addRecommendedBookToLibrary.fulfilled, (state) => {
+      .addCase(addRecommendedBookToLibrary.fulfilled, (state, action) => {
         state.recommended.isLoading = false;
+        state.recommended.books = state.recommended.books.map((book) => {
+          if (book.title === action.payload.title) {
+            return {
+              ...book,
+              isAdded: true,
+            };
+          }
+
+          return book;
+        });
       })
       .addCase(addRecommendedBookToLibrary.rejected, (state) => {
         state.recommended.isLoading = false;

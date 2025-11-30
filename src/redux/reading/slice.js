@@ -25,35 +25,14 @@ const readingSlice = createSlice({
       .addCase(getBookInfo.rejected, (state) => {
         state.isLoading = false;
       })
-      .addCase(startReading.pending, (state) => {
-        state.isLoading = true;
-      })
       .addCase(startReading.fulfilled, (state, action) => {
         state.currentBook = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(startReading.rejected, (state) => {
-        state.isLoading = false;
-      })
-      .addCase(stopReading.pending, (state) => {
-        state.isLoading = true;
       })
       .addCase(stopReading.fulfilled, (state, action) => {
         state.currentBook = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(stopReading.rejected, (state) => {
-        state.isLoading = false;
-      })
-      .addCase(deleteReading.pending, (state) => {
-        state.isLoading = true;
       })
       .addCase(deleteReading.fulfilled, (state, action) => {
         state.currentBook = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(deleteReading.rejected, (state) => {
-        state.isLoading = false;
       });
   },
 });

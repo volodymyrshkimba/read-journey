@@ -2,6 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { clearActiveProgress } from "../../utils/clearActiveProgress";
 
+export const selectReadingIsLoading = (state) => state.reading.isLoading;
 export const selectBook = (state) => state.reading.currentBook;
 export const selectProgress = (state) => state.reading.currentBook.progress;
 export const selectTotalPages = (state) => state.reading.currentBook.totalPages;
