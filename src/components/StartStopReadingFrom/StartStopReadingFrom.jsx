@@ -6,6 +6,7 @@ import Button from "../Button/Button";
 
 import { selectActiveStatus } from "../../redux/reading/selectors";
 import { startReading, stopReading } from "../../redux/reading/operations";
+import { openModal } from "../../redux/modal/slice";
 
 import css from "./StartStopReadingFrom.module.css";
 
@@ -21,7 +22,21 @@ const StartStopReadingFrom = ({ bookId }) => {
 
   const onSubmit = (formData) => {
     const data = { ...formData, id: bookId };
-    dispatch(isActive ? stopReading(data) : startReading(data));
+    if (isActive) {
+      dispatch(stopReading(data))
+        .unwrap()
+        .then((response) => {
+          if (response.status === "done") {
+            dispatch(
+              openModal({
+                type: "bookReaded",
+              })
+            );
+          }
+        });
+    } else {
+      dispatch(startReading(data));
+    }
     reset();
   };
 

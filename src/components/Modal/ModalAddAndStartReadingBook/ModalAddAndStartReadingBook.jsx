@@ -13,6 +13,7 @@ const ModalAddAndStartReadingBook = ({
   author,
   imageUrl,
   totalPages,
+  isAdded,
   onClose,
   isStartReadingBook,
 }) => {
@@ -44,13 +45,17 @@ const ModalAddAndStartReadingBook = ({
       <h3 className={css.title}>{title}</h3>
       <p className={css.author}>{author}</p>
       <p className={css.totalPages}>{totalPages} pages</p>
-      <Button
-        onClick={isStartReadingBook ? startReading : addBookToLibrary}
-        variant="transparent"
-        size="addToLibrary"
-      >
-        {isStartReadingBook ? "Start reading" : "Add to library"}
-      </Button>
+      {isAdded ? (
+        <div className={css.added}>added to library</div>
+      ) : (
+        <Button
+          onClick={isStartReadingBook ? startReading : addBookToLibrary}
+          variant="transparent"
+          size="addToLibrary"
+        >
+          {isStartReadingBook ? "Start reading" : "Add to library"}
+        </Button>
+      )}
     </div>
   );
 };

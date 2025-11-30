@@ -21,12 +21,14 @@
 }
 
 @media screen and (max-width: 767px) {
-  .modal.bookAdded {
+  .modal.bookAdded,
+  .modal.bookReaded {
     padding-top: 60px;
     padding-bottom: 60px;
   }
 
-  .closeBtn.bookAdded {
+  .closeBtn.bookAdded,
+  .closeBtn.bookReaded {
     right: 12px;
   }
 }
@@ -44,7 +46,8 @@
     padding-bottom: 50px;
   }
 
-  .modal.bookAdded {
+  .modal.bookAdded,
+  .modal.bookReaded {
     width: 342px;
   }
 }

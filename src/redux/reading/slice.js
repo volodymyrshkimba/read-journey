@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getBookInfo, startReading, stopReading } from "./operations";
+import {
+  deleteReading,
+  getBookInfo,
+  startReading,
+  stopReading,
+} from "./operations";
 
 const readingSlice = createSlice({
   name: "reading",
@@ -38,6 +43,16 @@ const readingSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(stopReading.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(deleteReading.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteReading.fulfilled, (state, action) => {
+        state.currentBook = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(deleteReading.rejected, (state) => {
         state.isLoading = false;
       });
   },

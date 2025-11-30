@@ -39,3 +39,18 @@ export const stopReading = createAsyncThunk(
     }
   }
 );
+
+export const deleteReading = createAsyncThunk(
+  "reading/deleteReading",
+  async ({ bookId, readingId }, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(
+        `/books/reading?bookId=${bookId}&readingId=${readingId}`
+      );
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

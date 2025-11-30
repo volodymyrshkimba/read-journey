@@ -1,5 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
+import { clearActiveProgress } from "../../utils/clearActiveProgress";
+
 export const selectBook = (state) => state.reading.currentBook;
 export const selectProgress = (state) => state.reading.currentBook.progress;
 export const selectTotalPages = (state) => state.reading.currentBook.totalPages;
@@ -17,15 +19,25 @@ export const selectActiveStatus = (state) =>
     (book) => book.status === "active"
   ) || false;
 
-export const selectHasProgress = (state) => state.reading.currentBook?.progress;
+export const selectHasProgress = (state) => {
+  if (state.reading.currentBook?.progress) {
+    return (
+      clearActiveProgress(state.reading.currentBook?.progress).length !== 0
+    );
+  } else {
+    return false;
+  }
+};
 
 export const selectPercentageAndPagesRead = createSelector(
   [selectBook],
   (book) => {
     let pagesRead = 0;
 
+    const clearedProgress = clearActiveProgress([...book.progress]);
+
     if (book.progress.length !== 0) {
-      const sortedBooks = [...book.progress].sort(
+      const sortedBooks = clearedProgress.sort(
         (a, b) => b.finishPage - a.finishPage
       );
 
@@ -47,7 +59,7 @@ export const selectPercentageAndPagesRead = createSelector(
 export const selectDiary = createSelector(
   [selectProgress, selectTotalPages],
   (progress, totalPages) => {
-    const sortedToLastDate = [...progress].sort(
+    const sortedToLastDate = clearActiveProgress([...progress]).sort(
       (a, b) => new Date(b.finishReading) - new Date(a.finishReading)
     );
 

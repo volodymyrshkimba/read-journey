@@ -35,4 +35,8 @@
   .inputsWrapper {
     margin-bottom: 20px;
   }
+
+  .form {
+    flex-grow: 0;
+  }
 }

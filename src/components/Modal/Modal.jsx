@@ -34,6 +34,12 @@ const Modal = () => {
     bookAdded: (
       <ModalAddedAndReadedBook onClose={() => dispatch(closeModal())} />
     ),
+    bookReaded: (
+      <ModalAddedAndReadedBook
+        onClose={() => dispatch(closeModal())}
+        isbookReaded={modalType === "bookReaded"}
+      />
+    ),
   };
 
   return (

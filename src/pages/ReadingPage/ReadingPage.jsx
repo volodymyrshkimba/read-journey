@@ -37,7 +37,7 @@ const ReadingPage = () => {
     <PageWrapper>
       <DashboardWrapper page="readingPage">
         <StartStopReadingFrom bookId={id} />
-        {hasProgress ? <DiaryAndStatistics /> : <ReadingProgress />}
+        {hasProgress ? <DiaryAndStatistics bookId={id} /> : <ReadingProgress />}
       </DashboardWrapper>
       <PageMainWrapper page="readingPage" title={"My reading"}>
         <div className={css.wrapper}>

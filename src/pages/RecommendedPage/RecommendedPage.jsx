@@ -13,10 +13,10 @@ import books from "../../img/books.png";
 import { usePerPage } from "../../hooks/usePerPage";
 
 import { openModal } from "../../redux/modal/slice";
-import { getRecommended } from "../../redux/books/operations";
+import { getOwnBooks, getRecommended } from "../../redux/books/operations";
 import {
-  selectRecommendedBooks,
   selectRecommendedBooksTotalPages,
+  selectRecommendedWithStatus,
 } from "../../redux/books/selectors";
 
 import css from "./RecommendedPage.module.css";
@@ -29,7 +29,7 @@ const RecommendedPage = () => {
   const perPage = usePerPage();
   const [filters, setFilters] = useState(defaultFilters);
 
-  const booksData = useSelector(selectRecommendedBooks);
+  const booksData = useSelector(selectRecommendedWithStatus);
   const totalPages = useSelector(selectRecommendedBooksTotalPages);
 
   const getFilters = (formData) => {
@@ -45,6 +45,7 @@ const RecommendedPage = () => {
         ...filters,
       })
     );
+    dispatch(getOwnBooks());
   }, [page, perPage, filters, dispatch]);
 
   return (

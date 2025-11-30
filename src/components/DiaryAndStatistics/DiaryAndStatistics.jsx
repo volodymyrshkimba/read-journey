@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Icon from "../Icon/Icon";
 import CircularProgress from "../CircularProgress/CircularProgress";
+import RisingSpeedGraph from "../RisingSpeedGraph/RisingSpeedGraph";
 
 import {
   selectDiary,
   selectPercentageAndPagesRead,
 } from "../../redux/reading/selectors";
+import { deleteReading } from "../../redux/reading/operations";
 
 import { usePerPage } from "../../hooks/usePerPage";
 
 import css from "./DiaryAndStatistics.module.css";
-import RisingSpeedGraph from "../RisingSpeedGraph/RisingSpeedGraph";
 
 const tabs = [
   {
@@ -27,7 +28,8 @@ const tabs = [
   },
 ];
 
-const DiaryAndStatistics = () => {
+const DiaryAndStatistics = ({ bookId }) => {
+  const dispatch = useDispatch();
   const [currTab, setCurrTab] = useState(tabs[0]);
   const viewportSize = usePerPage();
 
@@ -75,7 +77,15 @@ const DiaryAndStatistics = () => {
                           {item.perHour} pages per hour
                         </p>
                       </div>
-                      <button className={css.trashBtn} type="button">
+                      <button
+                        onClick={() =>
+                          dispatch(
+                            deleteReading({ bookId, readingId: item.id })
+                          )
+                        }
+                        className={css.trashBtn}
+                        type="button"
+                      >
                         <Icon
                           name="trash"
                           stroke
