@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 
 import Input from "../Input/Input";
@@ -7,14 +8,22 @@ import Button from "../Button/Button";
 import { addBook } from "../../redux/books/operations";
 import { openModal } from "../../redux/modal/slice";
 
+import { AddBookSchema } from "../../validation/books.js";
+
 import css from "./AddBookForm.module.css";
 
 const defaultFilters = { title: "", author: "", totalPages: "" };
 
 const AddBookForm = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitted, isSubmitSuccessful },
+  } = useForm({
     defaultValues: defaultFilters,
+    resolver: yupResolver(AddBookSchema),
   });
 
   const onSubmit = (formData) => {
@@ -27,6 +36,7 @@ const AddBookForm = () => {
           })
         );
       });
+    reset();
   };
 
   return (
@@ -39,6 +49,9 @@ const AddBookForm = () => {
           type={"text"}
           id={"title"}
           register={register}
+          error={errors.title?.message}
+          isSubmitted={isSubmitted}
+          isSubmitSuccessful={isSubmitSuccessful}
         />
         <Input
           label={"The author:"}
@@ -46,6 +59,9 @@ const AddBookForm = () => {
           type={"text"}
           id={"author"}
           register={register}
+          error={errors.author?.message}
+          isSubmitted={isSubmitted}
+          isSubmitSuccessful={isSubmitSuccessful}
         />
         <Input
           label={"Number of pages:"}
@@ -53,6 +69,9 @@ const AddBookForm = () => {
           type={"number"}
           id={"totalPages"}
           register={register}
+          error={errors.totalPages?.message}
+          isSubmitted={isSubmitted}
+          isSubmitSuccessful={isSubmitSuccessful}
         />
       </div>
       <Button type="submit" size={"addBook"} variant={"transparent"}>

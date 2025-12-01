@@ -6,6 +6,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
+import "./api/interceptors.js";
+
 import App from "./App.jsx";
 
 import store, { persistor } from "./redux/store.js";

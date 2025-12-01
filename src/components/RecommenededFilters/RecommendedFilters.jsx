@@ -9,6 +9,7 @@ const RecommendedFilters = ({ getFilters, defaultFilters }) => {
   const { register, handleSubmit } = useForm({
     defaultValues: defaultFilters,
   });
+
   const onSubmit = (formData) => {
     getFilters(formData);
   };

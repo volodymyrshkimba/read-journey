@@ -48,8 +48,11 @@ const RecommendedPage = () => {
         ...filters,
       })
     );
-    dispatch(getOwnBooks());
   }, [page, perPage, filters, dispatch]);
+
+  useEffect(() => {
+    dispatch(getOwnBooks());
+  }, [dispatch]);
 
   return (
     <PageWrapper>

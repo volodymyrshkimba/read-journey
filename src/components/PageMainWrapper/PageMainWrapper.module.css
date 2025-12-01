@@ -3,6 +3,7 @@
   background-color: var(--dark-secondary);
   border-radius: 30px;
   padding: 40px 20px;
+  min-height: 382px;
 }
 
 .title {
@@ -13,6 +14,7 @@
 @media screen and (min-width: 768px) {
   .wrapper {
     padding: 40px;
+    min-height: 663px;
   }
 
   .wrapper.readingPage {
@@ -29,6 +31,7 @@
 @media screen and (min-width: 1280px) {
   .wrapper {
     padding: 40px 40px 28px 40px;
+    min-height: 651px;
   }
 
   .wrapper.readingPage {

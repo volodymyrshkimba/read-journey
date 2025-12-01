@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 import css from "./PageMainWrapper.module.css";
 
 const PageMainWrapper = ({ children, title, page }) => {

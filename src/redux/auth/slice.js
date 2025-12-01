@@ -10,6 +10,7 @@ const authSlice = createSlice({
       email: null,
     },
     token: null,
+    refreshToken: null,
     isSignedIn: false,
     isLoading: false,
   },
@@ -22,6 +23,7 @@ const authSlice = createSlice({
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
         state.isSignedIn = true;
         state.isLoading = false;
       })
@@ -35,6 +37,7 @@ const authSlice = createSlice({
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
         state.isSignedIn = true;
         state.isLoading = false;
       })
@@ -50,6 +53,7 @@ const authSlice = createSlice({
           email: null,
         };
         state.token = null;
+        state.refreshToken = null;
         state.isSignedIn = false;
         state.isLoading = false;
       })
@@ -63,6 +67,7 @@ const authSlice = createSlice({
         state.user.name = action.payload.name;
         state.user.email = action.payload.email;
         state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
         state.isSignedIn = true;
         state.isLoading = false;
       })
@@ -70,6 +75,14 @@ const authSlice = createSlice({
         state.isLoading = false;
       });
   },
+  reducers: {
+    setTokens: (state, action) => {
+      state.token = action.payload.token;
+      state.refreshToken = action.payload.refreshToken;
+    },
+  },
 });
+
+export const { setTokens } = authSlice.actions;
 
 export default authSlice.reducer;

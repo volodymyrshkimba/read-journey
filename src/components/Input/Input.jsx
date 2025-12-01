@@ -1,9 +1,9 @@
 import { useState } from "react";
+import clsx from "clsx";
 
 import Icon from "../Icon/Icon";
 
 import css from "./Input.module.css";
-import clsx from "clsx";
 
 const Input = ({
   type,

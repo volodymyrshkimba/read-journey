@@ -1,21 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
-axios.defaults.baseURL = "https://readjourney.b.goit.study/api";
-
-const setAuthHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
-};
+import { api } from "../../api/axios";
+import { clearAuthHeader, setAuthHeader } from "../../api/token";
 
 export const signup = createAsyncThunk(
   "auth/signup",
   async (user, thunkAPI) => {
     try {
-      const { data } = await axios.post("/users/signup", user);
+      const { data } = await api.post("/users/signup", user);
 
       setAuthHeader(data.token);
 
@@ -30,7 +22,7 @@ export const signin = createAsyncThunk(
   "auth/signin",
   async (user, thunkAPI) => {
     try {
-      const { data } = await axios.post("/users/signin", user);
+      const { data } = await api.post("/users/signin", user);
 
       setAuthHeader(data.token);
 
@@ -43,7 +35,7 @@ export const signin = createAsyncThunk(
 
 export const signout = createAsyncThunk("auth/signout", async (_, thunkAPI) => {
   try {
-    await axios.post("/users/signout");
+    await api.post("/users/signout");
     clearAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -59,7 +51,7 @@ export const current = createAsyncThunk("auth/current", async (_, thunkAPI) => {
   try {
     setAuthHeader(state.auth.token);
 
-    const { data } = await axios.get("/users/current");
+    const { data } = await api.get("/users/current");
 
     return data;
   } catch (error) {

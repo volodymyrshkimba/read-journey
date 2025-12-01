@@ -17,10 +17,10 @@ import modalReducer from "./modal/slice";
 import readingReducer from "./reading/slice";
 
 const persistAuthConfig = {
-  key: "token",
+  key: "auth",
   version: 1,
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "refreshToken"],
 };
 
 const persistedAuthReducer = persistReducer(persistAuthConfig, authReducer);
