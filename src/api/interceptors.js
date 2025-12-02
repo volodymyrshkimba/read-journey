@@ -1,5 +1,6 @@
 import { api } from "./axios";
 import { setAuthHeader } from "./token";
+
 import store from "../redux/store";
 import { setTokens } from "../redux/auth/slice";
 import { signout } from "../redux/auth/operations";
@@ -22,6 +23,23 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
+
+    // Якщо 401 ПРИ РЕФРЕШІ — НЕ пробуємо рефреш ще раз
+    if (
+      error.response?.status === 401 &&
+      originalRequest.url.includes("/users/current/refresh")
+    ) {
+      store.dispatch(signout());
+      return Promise.reject(error);
+    }
+
+    // Якщо це login/register — НЕ пробуємо refresh
+    if (
+      originalRequest.url.includes("/users/signup") ||
+      originalRequest.url.includes("/users/signin")
+    ) {
+      return Promise.reject(error);
+    }
 
     // Якщо 401 та запит ще не повторювався
     if (error.response?.status === 401 && !originalRequest._retry) {
@@ -50,7 +68,6 @@ api.interceptors.response.use(
         const newAccessToken = data.token;
         const newRefreshToken = data.refreshToken;
 
-        // Оновлюємо токени у Redux
         store.dispatch(
           setTokens({
             token: newAccessToken,
@@ -58,17 +75,14 @@ api.interceptors.response.use(
           })
         );
 
-        // Оновлюємо хедер axios
         setAuthHeader(newAccessToken);
 
         processQueue(null, newAccessToken);
 
-        // Повторюємо оригінальний запит
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
         return api(originalRequest);
       } catch (refreshError) {
         processQueue(refreshError, null);
-        // Тут можна робити logout
         store.dispatch(signout());
         return Promise.reject(refreshError);
       } finally {

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 
 import Input from "../Input/Input";
 import Button from "../Button/Button";
@@ -42,9 +43,16 @@ const StartStopReadingFrom = ({ bookId }) => {
               })
             );
           }
+        })
+        .catch((error) => {
+          toast.info(error.message);
         });
     } else {
-      dispatch(startReading(data));
+      dispatch(startReading(data))
+        .unwrap()
+        .catch((error) => {
+          toast.info(error.message);
+        });
     }
     reset();
   };

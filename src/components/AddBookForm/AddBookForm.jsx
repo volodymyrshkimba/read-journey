@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import Input from "../Input/Input";
 import Button from "../Button/Button";
@@ -29,12 +30,17 @@ const AddBookForm = () => {
   const onSubmit = (formData) => {
     dispatch(addBook(formData))
       .unwrap()
-      .then(() => {
+      .then((data) => {
+        console.log(data);
+
         dispatch(
           openModal({
             type: "bookAdded",
           })
         );
+      })
+      .catch((error) => {
+        toast.info(error.message);
       });
     reset();
   };
