@@ -6,6 +6,7 @@ import Button from "../../Button/Button";
 import { addRecommendedBookToLibrary } from "../../../redux/books/operations";
 
 import css from "./ModalAddAndStartReadingBook.module.css";
+import { toast } from "react-toastify";
 
 const ModalAddAndStartReadingBook = ({
   _id,
@@ -21,7 +22,11 @@ const ModalAddAndStartReadingBook = ({
   const navigate = useNavigate();
 
   const addBookToLibrary = () => {
-    dispatch(addRecommendedBookToLibrary(_id));
+    dispatch(addRecommendedBookToLibrary(_id))
+      .unwrap()
+      .then(() => {
+        toast.info("Book successfully added");
+      });
     onClose();
   };
 
