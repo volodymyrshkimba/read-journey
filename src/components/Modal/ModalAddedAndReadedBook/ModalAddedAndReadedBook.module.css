@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.likeImgWrapper {
+.imgWrapper {
   margin-bottom: 20px;
 }
 
@@ -28,12 +28,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .likeImg {
+  .img {
     width: 68px;
     height: 70px;
   }
 
-  .likeImgWrapper {
+  .imgWrapper {
     margin-bottom: 32px;
   }
 

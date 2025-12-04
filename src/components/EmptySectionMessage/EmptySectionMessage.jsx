@@ -1,4 +1,5 @@
 import booksImg from "../../img/books.png";
+import booksImg2x from "../../img/books@2x.png";
 
 import css from "./EmptySectionMessage.module.css";
 
@@ -37,7 +38,14 @@ const EmptySectionMessage = ({ type }) => {
   return (
     <div className={css.noBookWrapper}>
       <div className={css.noBookImgWrapper}>
-        <img className={css.noBookImg} src={booksImg} alt="books" />
+        <img
+          className={css.noBookImg}
+          src={booksImg}
+          srcSet={`${booksImg} 1x, ${booksImg2x} 2x`}
+          alt="books"
+          width={40}
+          height={40}
+        />
       </div>
       <p className={css.noBookText}>{messages[type]}</p>
     </div>

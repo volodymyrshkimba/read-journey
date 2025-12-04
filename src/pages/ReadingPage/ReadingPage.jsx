@@ -68,9 +68,9 @@ const ReadingPage = () => {
             <h3 className={css.title}>{bookInfo?.title}</h3>
             <p className={css.author}>{bookInfo?.author}</p>
             <div className={css.record}>
-              <div
+              <span
                 className={clsx(css.recordInner, isActive && css.active)}
-              ></div>
+              ></span>
             </div>
           </div>
         )}

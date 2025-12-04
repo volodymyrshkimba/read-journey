@@ -45,7 +45,7 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(signout.pending, (state) => {
-        state.isRefreshing = true;
+        state.isLoading = true;
       })
       .addCase(signout.fulfilled, (state) => {
         state.user = {
@@ -58,7 +58,14 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(signout.rejected, (state) => {
-        state.isRefreshing = false;
+        state.user = {
+          name: null,
+          email: null,
+        };
+        state.token = null;
+        state.refreshToken = null;
+        state.isSignedIn = false;
+        state.isLoading = false;
       })
       .addCase(current.pending, (state) => {
         state.isLoading = true;

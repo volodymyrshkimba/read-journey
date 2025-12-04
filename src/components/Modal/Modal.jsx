@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 
@@ -14,6 +15,20 @@ import css from "./Modal.module.css";
 const Modal = () => {
   const dispatch = useDispatch();
   const { isOpen, modalType, modalProps } = useSelector(selectModalData);
+
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        dispatch(closeModal());
+      }
+    };
+
+    window.addEventListener("keydown", handleEsc);
+
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [dispatch]);
 
   if (!isOpen) return null;
 

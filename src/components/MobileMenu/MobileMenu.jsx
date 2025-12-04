@@ -6,8 +6,8 @@ import css from "./MobileMenu.module.css";
 
 const MobileMenu = ({ closeMenu, singOut }) => {
   return (
-    <div className={css.mobileMenu}>
-      <div className={css.menu}>
+    <div className={css.mobileMenu} onClick={() => closeMenu()}>
+      <div className={css.menu} onClick={(e) => e.stopPropagation()}>
         <button
           className={css.closeBtn}
           type="button"

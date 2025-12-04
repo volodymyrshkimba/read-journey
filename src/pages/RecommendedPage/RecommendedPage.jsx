@@ -10,6 +10,7 @@ import PaginationArrow from "../../components/PaginationArrow/PaginationArrow";
 import Loader from "../../components/Loader/Loader";
 
 import books from "../../img/books.png";
+import books2x from "../../img/books@2x.png";
 
 import { usePerPage } from "../../hooks/usePerPage";
 
@@ -63,7 +64,13 @@ const RecommendedPage = () => {
         />
         <StartYourWorkout />
         <div className={css.booksWrapper}>
-          <img src={books} alt="books" width={40} height={40} />
+          <img
+            src={books}
+            srcSet={`${books} 1x, ${books2x} 2x`}
+            alt="books"
+            width={40}
+            height={40}
+          />
           <p>
             "Books are <span className={css.accent}>windows</span> to the world,
             and reading is a journey into the unknown."

@@ -33,7 +33,7 @@ api.interceptors.response.use(
       return Promise.reject(error);
     }
 
-    // Якщо це login/register — НЕ пробуємо refresh
+    // Якщо це signup/signin — НЕ пробуємо refresh
     if (
       originalRequest.url.includes("/users/signup") ||
       originalRequest.url.includes("/users/signin")

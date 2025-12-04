@@ -10,6 +10,7 @@ import { signout } from "../../redux/auth/operations.js";
 import { selectUserNameAndFirstLetter } from "../../redux/auth/selectors.js";
 
 import css from "./Header.module.css";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,11 @@ const Header = () => {
   };
 
   const singOut = () => {
-    dispatch(signout());
+    dispatch(signout())
+      .unwrap()
+      .catch((error) => {
+        toast.info(error.message);
+      });
   };
 
   return (

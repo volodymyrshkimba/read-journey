@@ -1,4 +1,5 @@
 import starImg from "../../img/star.png";
+import starImg2x from "../../img/star@2x.png";
 
 import css from "./ReadingProgress.module.css";
 
@@ -12,7 +13,14 @@ const ReadingProgress = () => {
           red button above.
         </p>
         <div className={css.imgWrapper}>
-          <img className={css.img} src={starImg} alt="star" />
+          <img
+            className={css.img}
+            src={starImg}
+            srcSet={`${starImg} 1x, ${starImg2x} 2x`}
+            alt="star"
+            width={40}
+            height={40}
+          />
         </div>
       </div>
     </div>

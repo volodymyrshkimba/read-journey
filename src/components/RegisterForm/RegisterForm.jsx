@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 
 import { RegisterSchema } from "../../validation/auth";
 
@@ -23,7 +24,11 @@ const RegisterForm = () => {
   } = useForm({ resolver: yupResolver(RegisterSchema) });
 
   const onSubmit = (data) => {
-    dispatch(signup(data));
+    dispatch(signup(data))
+      .unwrap()
+      .catch((error) => {
+        toast.info(error.message);
+      });
     reset();
   };
 
