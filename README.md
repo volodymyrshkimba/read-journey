@@ -1,11 +1,11 @@
 <div style="display: flex; align-items: center; gap: 10px;">
-  <h1 style="margin: 0;">Read Journey</h1>
-
-  <picture>
+  <h1 style="margin: 0;">Read Journey   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github.com/volodymyrshkimba/read-journey/blob/main/src/img/fav-light.svg?raw=true">
     <source media="(prefers-color-scheme: light)" srcset="https://github.com/volodymyrshkimba/read-journey/blob/main/src/img/fav-dark.svg?raw=true">
     <img alt="Read Journey Logo" width="32" height="32" src="https://github.com/volodymyrshkimba/read-journey/blob/main/src/img/fav-light.svg?raw=true">
-  </picture>
+  </picture></h1>
+
+
 </div>
 
 ---
