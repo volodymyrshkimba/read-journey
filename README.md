@@ -15,10 +15,10 @@ Backend API docs: https://readjourney.b.goit.study/api-docs/
 ---
 
 ## Screenshots
-<img src="src/img/screenshots/rec.png" width="500">
-<img src="src/img/screenshots/lib.png" width="500">
-<img src="src/img/screenshots/red.png" width="500">
-<img src="src/img/screenshots/auth.png" width="500">
+<img src="src/img/screenshots/rec.png" width="700">
+<img src="src/img/screenshots/lib.png" width="700">
+<img src="src/img/screenshots/red.png" width="700">
+<img src="src/img/screenshots/auth.png" width="700">
 
 ---
 
