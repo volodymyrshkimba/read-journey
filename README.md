@@ -1,4 +1,9 @@
 # Read Journey ![](https://github.com/volodymyrshkimba/read-journey/blob/main/src//img/fav-light.svg?raw=true)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/volodymyrshkimba/read-journey/blob/main/src/img/fav-light.svg?raw=true">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/volodymyrshkimba/read-journey/blob/main/src/img/fav-dark.svg?raw=true">
+  <img alt="Read Journey Logo" src="https://github.com/volodymyrshkimba/read-journey/blob/main/src/img/fav-light.svg?raw=true">
+</picture>
 
 ---
 
