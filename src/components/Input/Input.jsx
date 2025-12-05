@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import clsx from "clsx";
 
 import Icon from "../Icon/Icon";
@@ -16,6 +16,16 @@ const Input = ({
   isSubmitSuccessful,
 }) => {
   const [visible, setVisible] = useState(false);
+  const inputRef = useRef(null);
+
+  const handleBlur = () => {
+    document.body.style.transform = "scale(0.999)";
+    document.body.style.transformOrigin = "top left";
+
+    setTimeout(() => {
+      document.body.style.transform = "scale(1)";
+    }, 50);
+  };
 
   return (
     <label
@@ -31,6 +41,8 @@ const Input = ({
         type={type === "password" && visible ? "text" : type}
         placeholder={placeholder}
         {...register(id)}
+        ref={inputRef}
+        onBlur={handleBlur}
       />
       {(error || (isSubmitted && !error && !isSubmitSuccessful)) && (
         <span
