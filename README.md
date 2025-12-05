@@ -40,17 +40,17 @@ Backend API docs: https://readjourney.b.goit.study/api-docs/
 
 ## Project structure
 
-src/
-├── api/ # axios instance, auth helpers, interceptors
-├── components/ # Components, Wrappers
-├── fonts/ # Gilroy, woff, woff2
-├── pages/ # Recommended, Library, Reading, Auth pages
-├── store/ # redux slices, store config
-├── index.css # global CSS, variables
-├── img/ # images, sprite, favicons
-├── utils/ # helpers
-├── validation/ # validators
-└── hooks/ # usePerPage, saveLastRoute
+- src/
+  - api/ — axios instance, auth helpers, interceptors
+  - components/ — Components, Wrappers
+  - fonts/ — Gilroy, woff, woff2
+  - pages/ — Recommended, Library, Reading, Auth pages
+  - store/ — redux slices, store config
+  - index.css — global CSS, variables
+  - img/ — images, sprite, favicons
+  - utils/ — helpers
+  - validation/ — validators
+  - hooks/ — usePerPage, saveLastRoute
 
 ---
 
