@@ -1,12 +1,71 @@
-# React + Vite
+# Read Journey ![](https://github.com/volodymyrshkimba/read-journey/blob/main/src//img/fav-light.svg?raw=true)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Project overview
+Read Journey is a responsive React app for a book-reading tracker and personal library.  
+It supports user signin/signup, browsing recommended books with server-side pagination, managing a personal library, and tracking reading progress (diary & statistics). Integrates with the provided backend API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Figma design: https://www.figma.com/file/z3m0rdBcEfLTJUBDkAKhWQ/BOOKS-READING  
+Backend API docs: https://readjourney.b.goit.study/api-docs/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Key features
+- Public pages: Register, Login  
+- Private pages (auth required):
+  - `/recommended` — recommended books + server-side pagination + book search + book modal
+  - `/library` — user's library, filter by status, add & remove books
+  - `/reading` — start/stop reading, diary, statistics
+- Universal `Dashboard` wrapper with page-specific controls (Filters, AddBook, AddReading)
+- Forms validated with `react-hook-form` + `Yup`; server errors shown as notifications
+- Modal behavior: close on backdrop click, close-button, or Esc
+- Images optimized (retina support), icons via sprite, favicons included
+- Responsive breakpoints: mobile (320–), mobile adaptive (≥375px), tablet (≥768px), desktop (≥1440px)
+
+---
+
+## Tech stack
+- React (Vite)
+- Redux (Redux Toolkit) for state
+- react-router for routing
+- react-hook-form + Yup for form validation
+- Axios for HTTP requests (interceptors for auth/refresh)
+- CSS / (modules, vars)
+
+---
+
+## Project structure
+
+src/
+api/ # axios instance, auth helpers, interceptors
+components/ # Components, Wrappers
+fonts/ # Gilroy, woff, woff2
+pages/ # pages: Recommended, Library, Reading, Auth
+store/ # redux slices, store config
+intex.css/ # global CSS, variables
+img/ # images, sprite, favicons
+utils/ # helpers
+validation/ # validators
+hooks/ # usePerPage, saveLastRoute
+
+---
+
+## Setup & run
+```bash
+
+# clone 
+git clone https://github.com/volodymyrshkimba/read-journey.git
+
+# install
+npm install
+
+# dev
+npm run dev
+
+# build
+npm run build
+
+# preview production build
+npm run preview
+```
